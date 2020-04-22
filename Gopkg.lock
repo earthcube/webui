@@ -2,92 +2,282 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:a7f619ffc7b99687f9444bd0a07509fec8ae708a7175d234878129896c0918a8"
+  name = "github.com/alecthomas/template"
+  packages = [
+    ".",
+    "parse",
+  ]
+  pruneopts = ""
+  revision = "fb15b899a75114aa79cc930e33c46b577cc664b1"
+
+[[projects]]
+  digest = "1:349266232b1d3097cd393d68abbc74d286dd4c819b933957c1323fa1c4d1a42f"
   name = "github.com/blevesearch/bleve"
-  packages = [".","analysis","analysis/analyzers/standard_analyzer","analysis/datetime_parsers/datetime_optional","analysis/datetime_parsers/flexible_go","analysis/language/en","analysis/token_filters/lower_case_filter","analysis/token_filters/porter","analysis/token_filters/stop_tokens_filter","analysis/tokenizers/unicode","document","index","index/store","index/store/boltdb","index/store/gtreap","index/upside_down","numeric_util","registry","search","search/collectors","search/facets","search/highlight","search/highlight/fragment_formatters/html","search/highlight/fragmenters/simple","search/highlight/highlighters/html","search/highlight/highlighters/simple","search/scorers","search/searchers"]
+  packages = [
+    ".",
+    "analysis",
+    "analysis/analyzers/standard_analyzer",
+    "analysis/datetime_parsers/datetime_optional",
+    "analysis/datetime_parsers/flexible_go",
+    "analysis/language/en",
+    "analysis/token_filters/lower_case_filter",
+    "analysis/token_filters/porter",
+    "analysis/token_filters/stop_tokens_filter",
+    "analysis/tokenizers/unicode",
+    "document",
+    "index",
+    "index/store",
+    "index/store/boltdb",
+    "index/store/gtreap",
+    "index/upside_down",
+    "numeric_util",
+    "registry",
+    "search",
+    "search/collectors",
+    "search/facets",
+    "search/highlight",
+    "search/highlight/fragment_formatters/html",
+    "search/highlight/fragmenters/simple",
+    "search/highlight/highlighters/html",
+    "search/highlight/highlighters/simple",
+    "search/scorers",
+    "search/searchers",
+  ]
+  pruneopts = ""
   revision = "97393d027342f43b17da2f02c090a4e728ac929f"
   version = "v0.5.0"
 
 [[projects]]
+  digest = "1:e2cbd6d50899e3593c79f24b73a1a7891c4cc683644fe2f3009fdc1679aa886e"
   name = "github.com/blevesearch/go-porterstemmer"
   packages = ["."]
-  revision = "b4dd94e38f29620fe0f97ae4b0f6994b0d5d75f0"
-  version = "v1.0.1"
+  pruneopts = ""
+  revision = "8a3f08ec93b36d000cf58bbb6d9f6da0edc45a5e"
+  version = "v1.0.3"
 
 [[projects]]
-  branch = "master"
+  digest = "1:0c48dcc144e6621fd36199179cb90099f16cf4c12bd278947b1806d33da3d6da"
   name = "github.com/blevesearch/segment"
   packages = ["."]
-  revision = "762005e7a34fd909a84586299f1dd457371d36ee"
+  pruneopts = ""
+  revision = "39f07ea41f180b52c3529983e7b7e6b0edda6ed0"
+  version = "v0.9.0"
 
 [[projects]]
+  digest = "1:ed112122ed4a920d944cc99b9d00b0441c11685939c28462c719488d36fe29aa"
   name = "github.com/boltdb/bolt"
   packages = ["."]
+  pruneopts = ""
   revision = "2f1ce7a837dcb8da3ec595b1dac9d0632f0f99e8"
   version = "v1.3.1"
 
 [[projects]]
-  branch = "master"
+  digest = "1:6e82f3d066d94380b7de2cea076ca5c9591ca26b8c70067fe4a43788c409c2f6"
+  name = "github.com/frictionlessdata/datapackage-go"
+  packages = [
+    "clone",
+    "datapackage",
+    "validator",
+    "validator/profile_cache",
+  ]
+  pruneopts = ""
+  revision = "ebe18689bda7901d1ebf4871f246ecfabd3d574d"
+  version = "1.0"
+
+[[projects]]
+  digest = "1:fc0a7d800423d093fc05e516458585bdfe65e41136447d4d6432bfec2fa73e7b"
+  name = "github.com/frictionlessdata/tableschema-go"
+  packages = [
+    "csv",
+    "schema",
+    "table",
+  ]
+  pruneopts = ""
+  revision = "f9bf38926664ea64d9749ee7024987a1e967004d"
+  version = "v1.4"
+
+[[projects]]
+  digest = "1:218d6d3952eb109dd9001ef0249e2e5f7881e5b06b5700a072f9649dc6df2778"
+  name = "github.com/go-resty/resty"
+  packages = ["."]
+  pruneopts = ""
+  revision = "fa5875c0caa5c260ab78acec5a244215a730247f"
+  version = "v1.12.0"
+
+[[projects]]
+  digest = "1:9b5b3604ab15e4dd3508a4e00929d60c29e467a4475601bfec5ec987e261d984"
   name = "github.com/golang/protobuf"
   packages = ["proto"]
-  revision = "11b8df160996e00fd4b55cbaafb3d84ec6d50fa8"
+  pruneopts = ""
+  revision = "1b794fe86dd6a0c7c52ae69b5c9cb0aeedc52afa"
+  version = "v1.4.0"
 
 [[projects]]
-  name = "github.com/gorilla/context"
-  packages = ["."]
-  revision = "1ea25387ff6f684839d82767c1733ff4d4d15d0a"
-  version = "v1.1"
-
-[[projects]]
-  branch = "master"
+  digest = "1:fbab76ba211c99fcd45a481a32530efc229f3510fd94889f361dcaf13ff05fe0"
   name = "github.com/gorilla/mux"
   packages = ["."]
-  revision = "7904d2e42e7ebbdb4a6eb3e57eb201b11df25c57"
+  pruneopts = ""
+  revision = "75dcda0896e109a2a22c9315bca3bb21b87b2ba5"
+  version = "v1.7.4"
 
 [[projects]]
   branch = "master"
+  digest = "1:05c92ff7473c7f34bfb5eef294725ba86d83ca0fada3efb97ac39149f693197c"
   name = "github.com/grokify/html-strip-tags-go"
   packages = ["."]
-  revision = "7a55ac806487a66b5d52fa2215f5d60aa33b5336"
+  pruneopts = ""
+  revision = "ea0c1cf2f119c457934db5bbf04954734632343d"
 
 [[projects]]
   branch = "master"
+  digest = "1:59935e1c1e29c3ee196031cf48d405b3bf33be61542806b9daaf989f6f6c180b"
   name = "github.com/knakk/digest"
   packages = ["."]
+  pruneopts = ""
   revision = "fd45becddc49e7c583e46de4af3b9b3b37e629e3"
 
 [[projects]]
   branch = "master"
+  digest = "1:35706d4a7e162d5fd95487b394533f459fcad1dd5683830d18f3c49494d63ca8"
   name = "github.com/knakk/rdf"
   packages = ["."]
-  revision = "9659d914ab599d63e07af0b84aeabd4a942b66d5"
+  pruneopts = ""
+  revision = "8521bf4c5042825653ef324b371a4491818b986d"
 
 [[projects]]
   branch = "master"
+  digest = "1:ea10948060b3d46471470c1efa37ed897d4bcf10cc41eeddb8affe0c5a5d4f46"
   name = "github.com/knakk/sparql"
   packages = ["."]
-  revision = "3de19ad6a5dcee30dd5e101b47e3aedc7f69ef57"
+  pruneopts = ""
+  revision = "fd0bd0e76475b2ff4bedc81d3ea27641941189bd"
 
 [[projects]]
-  branch = "master"
+  digest = "1:4b73a0659a08dd32fb042bfee9e62f4481bddf18cfc4dbff7dc68084e6ea4460"
+  name = "github.com/santhosh-tekuri/jsonschema"
+  packages = [
+    ".",
+    "decoders",
+    "formats",
+    "httploader",
+    "loader",
+    "mediatypes",
+  ]
+  pruneopts = ""
+  revision = "534765aa6277d702a0aaf99c986492dda697d48f"
+  version = "v1.2.4"
+
+[[projects]]
+  digest = "1:7f569d906bdd20d906b606415b7d794f798f91a62fcfb6a4daa6d50690fb7a3f"
+  name = "github.com/satori/go.uuid"
+  packages = ["."]
+  pruneopts = ""
+  revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
+  version = "v1.2.0"
+
+[[projects]]
+  digest = "1:72b3829ec0f6dad1cd8ae37f7f336df72f05171bfa6183c0ed27db8e342a2579"
   name = "github.com/steveyen/gtreap"
   packages = ["."]
-  revision = "0abe01ef9be25c4aedc174758ec2d917314d6d70"
+  pruneopts = ""
+  revision = "a0f7e0b09762a60753832eae309dad37f88f753b"
+  version = "v0.1.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:5ee8059477435bc4ec344bfa2ba129566bd0bc8137d98af9ec9aa4ba8e5f1e4e"
   name = "golang.org/x/net"
-  packages = ["context"]
-  revision = "8351a756f30f1297fe94bbf4b767ec589c6ea6d0"
+  packages = [
+    "context",
+    "idna",
+    "publicsuffix",
+  ]
+  pruneopts = ""
+  revision = "d3edc9973b7eb1fb302b0ff2c62357091cea9a30"
 
 [[projects]]
   branch = "master"
+  digest = "1:bec9c788e5357887ac914cbdec8cf6f2962661a852b902734f0fc90bbc58b08e"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "062cd7e4e68206d8bab9b18396626e855c992658"
+  pruneopts = ""
+  revision = "669c56c373c468cbe0f0c12b7939832b26088d33"
+
+[[projects]]
+  digest = "1:740b51a55815493a8d0f2b1e0d0ae48fe48953bf7eaf3fcc4198823bf67768c0"
+  name = "golang.org/x/text"
+  packages = [
+    "collate",
+    "collate/build",
+    "internal/colltab",
+    "internal/gen",
+    "internal/language",
+    "internal/language/compact",
+    "internal/tag",
+    "internal/triegen",
+    "internal/ucd",
+    "language",
+    "secure/bidirule",
+    "transform",
+    "unicode/bidi",
+    "unicode/cldr",
+    "unicode/norm",
+    "unicode/rangetable",
+  ]
+  pruneopts = ""
+  revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
+  version = "v0.3.2"
+
+[[projects]]
+  digest = "1:ceb27cc89cd1ef77c07c3ee297bd5da842b25889c76123031950cc4595401859"
+  name = "google.golang.org/protobuf"
+  packages = [
+    "encoding/prototext",
+    "encoding/protowire",
+    "internal/descfmt",
+    "internal/descopts",
+    "internal/detrand",
+    "internal/encoding/defval",
+    "internal/encoding/messageset",
+    "internal/encoding/tag",
+    "internal/encoding/text",
+    "internal/errors",
+    "internal/fieldnum",
+    "internal/fieldsort",
+    "internal/filedesc",
+    "internal/filetype",
+    "internal/flags",
+    "internal/genname",
+    "internal/impl",
+    "internal/mapsort",
+    "internal/pragma",
+    "internal/set",
+    "internal/strs",
+    "internal/version",
+    "proto",
+    "reflect/protoreflect",
+    "reflect/protoregistry",
+    "runtime/protoiface",
+    "runtime/protoimpl",
+  ]
+  pruneopts = ""
+  revision = "3b9eee12916ce611400f93d6c2fed2fc2911b0ad"
+  version = "v1.21.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "803236b4432b6c570cda307c2a9e102a95fdb90e5b13500d105755a40f73f37e"
+  input-imports = [
+    "github.com/alecthomas/template",
+    "github.com/blevesearch/bleve",
+    "github.com/frictionlessdata/datapackage-go/datapackage",
+    "github.com/frictionlessdata/tableschema-go/table",
+    "github.com/go-resty/resty",
+    "github.com/gorilla/mux",
+    "github.com/grokify/html-strip-tags-go",
+    "github.com/knakk/sparql",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
