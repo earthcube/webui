@@ -499,7 +499,7 @@ function blastsearchsimple(q, n, s) {
 	render(activesearch(), el)
 
 	// fetch(`http://geodex.org/api/v1/textindex/getnusearch?q=${data}`)
-	fetch(`http://localhost:6789/api/v1/textindex/getnusearch?q=${data}`)
+	fetch(`http://geodex.local.earthcube.org/api/v1/textindex/getnusearch?q=${data}`)
 		.then(function (response) {
 			return response.json();
 		})
