@@ -2,6 +2,7 @@ package sparql
 
 import (
 	"bytes"
+	"fmt"
 	"log"
 	"time"
 
@@ -80,8 +81,8 @@ type SPres struct {
 }
 
 // connector function for the local sparql instance
-func getLocalSPARQL() (*sparql.Repo, error) {
-	repo, err := sparql.NewRepo("http://geodex.org/blazegraph/namespace/kb/sparql",
+func getLocalSPARQL(host string) (*sparql.Repo, error) {
+	repo, err := sparql.NewRepo(fmt.Sprintf("http://%s/blazegraph/namespace/kb/sparql", host),
 		sparql.Timeout(time.Millisecond*15000),
 	)
 	if err != nil {
@@ -100,9 +101,9 @@ func getQuery(tag string) (string, error) {
 	return q, err
 }
 
-func DescriptionCall(url string) (string, error) {
+func DescriptionCall(host string, url string) (string, error) {
 
-	repo, err := getLocalSPARQL()
+	repo, err := getLocalSPARQL(host)
 
 	f := bytes.NewBufferString(queries)
 	bank := sparql.LoadBank(f)
@@ -134,10 +135,10 @@ func DescriptionCall(url string) (string, error) {
 }
 
 // SPARQLCall calls triple store and returns results
-func DoCall(url string) (SPres, error) {
+func DoCall(host string, url string) (SPres, error) {
 	data := SPres{}
 
-	repo, err := getLocalSPARQL()
+	repo, err := getLocalSPARQL(host)
 
 	f := bytes.NewBufferString(queries)
 	bank := sparql.LoadBank(f)

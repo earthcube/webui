@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 
@@ -16,6 +17,13 @@ type MyServer struct {
 }
 
 func main() {
+
+	var host string
+        flag.StringVar(&host, "host", "geodex.org", "API host")
+        flag.Parse()
+
+	search.Host = host
+
 	searchroute := mux.NewRouter()
 	searchroute.HandleFunc("/zeroth", search.DoSearch) // the REAL handler for this URL
 	http.Handle("/zeroth", searchroute)

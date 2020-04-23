@@ -14,6 +14,7 @@ import (
 	"github.com/go-resty/resty"
 )
 
+
 // OrganicResultsSet has top N results from each provider with scores
 type OrganicResultsSet struct {
 	OR        []OrganicResults // provider:results
@@ -161,7 +162,7 @@ func getByQuery(query, index string, startAt uint64) string {
 			"s": strconv.FormatUint(startAt, 16),
 			"i": index,
 		}).
-		Get("http://geodex.org/api/v1/textindex/searchset")
+		Get(fmt.Sprintf("http://%s/api/v1/textindex/searchset", Host))
 	if err != nil {
 		log.Println(err)
 	}
@@ -174,7 +175,7 @@ func geoJSONBySet(ja string) string {
 		SetFormData(map[string]string{
 			"body": ja,
 		}).
-		Post("http://geodex.org/api/v1/spatial/search/resourceset")
+		Post(fmt.Sprintf("http://%s/api/v1/spatial/search/resourceset", Host))
 	if err != nil {
 		log.Print(err)
 	}
@@ -196,7 +197,7 @@ func paramsBySet(ja string) string {
 		SetFormData(map[string]string{
 			"body": ja,
 		}).
-		Post("http://geodex.org/api/v1/graph/ressetdetails")
+		Post(fmt.Sprintf("http://%s/api/v1/graph/ressetdetails", Host))
 	if err != nil {
 		log.Print(err)
 	}
@@ -209,7 +210,7 @@ func peopleBySet(ja string) string {
 		SetFormData(map[string]string{
 			"body": ja,
 		}).
-		Post("http://geodex.org/api/v1/graph/ressetpeople")
+		Post(fmt.Sprintf("http://%s/api/v1/graph/ressetpeople", Host))
 	if err != nil {
 		log.Print(err)
 	}

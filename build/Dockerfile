@@ -2,7 +2,7 @@
 # CGO_ENABLED=0 env go build .
 # docker build -t earthcube/p418webui:latest -t earthcube/p418webui:0.0.4 .
 # docker run -d -p 9900:9900  opencoredata/ocdweb:0.0.1
-FROM ubuntu:bionic
+FROM alpine
 
 # Add in the static elements (could also mount these from local filesystem) later as the indexes grow
 ADD cmd/webui/webui /
@@ -13,8 +13,9 @@ ADD ./web/uis /uis
 # do this as a data mount now.. indexes are large
 # ADD ./indexes  /indexes 
 
-# Add our binary
-CMD ["/webui"]
-
 # Document that the service listens on this port
 EXPOSE 9900
+
+ADD ./entrypoint.sh /  
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["webui"]

@@ -16,6 +16,8 @@ import (
 	strip "github.com/grokify/html-strip-tags-go"
 )
 
+var Host = "geodex.org"
+
 // FreeTextResults is the exported struct holding the
 // results of the Bleve search
 type FreeTextResults struct {
@@ -151,7 +153,7 @@ func DoSearch(w http.ResponseWriter, r *http.Request) {
 			topResult := queryResults[0] // pass this as a new template section TR!
 			fmt.Println(topResult.ID)
 			var err error
-			spres, err = sparql.DoCall(topResult.ID) // turn sparql call on / off
+			spres, err = sparql.DoCall(Host, topResult.ID) // turn sparql call on / off
 			if err != nil {
 				log.Printf("SPARQL call failed: %s", err)
 			}
@@ -428,7 +430,7 @@ func indexCall(qstruct Qstring, startAt uint64, distance string) ([]FreeTextResu
 // SPARQLDescription call stub
 func SPARQLDescription(subject string) string {
 
-	desc, err := sparql.DescriptionCall(subject) // turn sparql call on / off
+	desc, err := sparql.DescriptionCall(Host, subject) // turn sparql call on / off
 	if err != nil {
 		log.Printf("SPARQL call failed: %s", err)
 	}
