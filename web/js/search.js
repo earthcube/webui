@@ -74,7 +74,26 @@ const searchTemplate = (barval) => {
 		`;
 };
 
-
+const itemTemplate = (resource, score) => {             
+        console.log("itemtemplate-----------------------------------------------")
+        if (resource.S == "") {                                                   
+                return                                                            
+}                                                                                 
+        var itemTemplates=[]                                                      
+                itemTemplates.push(                                               
+        html `<div class='resultitem'>                                            
+                <a href="https://geocodes-dev.earthcube.org/geocodes/details.html?url=${resource.URL}">${resource.Name}</a>
+                <div> <span>Dataset URL: <span><a href="${resource.URL}">${resource.URL}</a>&nbsp; <span>Date: <span><span>${resource.Datepublished}</span></div>
+                <div class='ellipsis'>${resource.Description}</div>                                                                                             
+                <div class='score'>(${score})</div>                                                                                                             
+        </div>`)                                                                                                                                                 
+                                                                                                                                                                
+        return html `                                                                                                                                           
+          <div>                                                                                                                                                 
+                    ${itemTemplates}                                                                                                                            
+      </div>                                                       
+                `;                                 
+};        
 // lit-html constant
 const threadTemplate = (barval) => {
 	console.log("threadtemplate-----------------------------------------------")
@@ -482,11 +501,11 @@ function searchActions() {
 	updateURL();
 
 	// Different search options
-	blastsearchsimple(q, n, s);
+//	blastsearchsimple(q, n, s);
 	// threadSearch(q, n, s, i); 
-	// simpleSearch();
+	 simpleSearch(q,n,s,i);
 
-	// updateNav();   // write to content div 1
+//	 updateNav();   // write to content div 1
 }
 
 function blastsearchsimple(q, n, s) {
@@ -498,8 +517,8 @@ function blastsearchsimple(q, n, s) {
 	const el = document.querySelector('#container2');
 	render(activesearch(), el)
 
-	// fetch(`http://geodex.org/api/v1/textindex/getnusearch?q=${data}`)
-	fetch(`http://geodex.org/api/v1/textindex/getnusearch?q=${data}`)
+	// fetch(`https://geodex.org/api/v1/textindex/getnusearch?q=${data}`)
+	fetch(`https://geocodes-dev.earthcube.org/api/v1/textindex/getnusearch?q=${data}`)
 		.then(function (response) {
 			return response.json();
 		})
@@ -511,33 +530,78 @@ function blastsearchsimple(q, n, s) {
 			render(navui(myJson.search_result.total_hits), navel);
 		});
 }
-
+function itemDetails(myJson, el) {                                                                        
+        var count = Object.keys(myJson).length;                                                           
+        const itemTemplates = [];                                                                         
+         el.innerHTML=''                                                                                  
+        var i;                                                                                            
+        for (i = 0; i < count; i++) {                                                                     
+                const detailsTemplate = []                                                                
+                let orset = myJson[i].or                                                                  
+                let orlen = orset.length                                                                  
+                                                                                                          
+                var j;                                                                                    
+                var items = []                                                                            
+                for (j = 0; j < orlen; j++) {                                                             
+                        let aDiv = el.appendChild( document.createElement('div') );                       
+                        fetch(`https://geocodes-dev.earthcube.org/api/v1/graph/details?r=${orset[j].URL}`)
+                                .then(function (response) {                                                                
+                                        return response.json();                                                                                                 
+                                }).then(function (myJson) {                                                                                                     
+                                // console.log(myJson);                                                                                                         
+                                render(itemTemplate(myJson,orset[j].score),aDiv)                                                                                               
+                                })                                                                                                                              
+                }                                                                                                                                               
+        }                                                                                                                                                       
+};          
 function threadSearch(q, n, s, i) {
-	fetch(`https://geodex.org/api/v1/textindex/searchset?q=${q}&n=${n}&s=${s}&i=${i}`)
+	fetch(`https://geocodes-dev.earthcube.org/api/v1/textindex/searchset?q=${q}&n=${n}&s=${s}&i=${i}`)
 		.then(function (response) {
 			return response.json();
 		})
 		.then(function (myJson) {
 			// console.log(myJson);
 			const el = document.querySelector('#container2');
-			render(threadTemplate(myJson), el);
-		});
+		//	render(threadTemplate(myJson), el);
+	 html`${itemDetails(myJson, el)}` 
+	});
 }
+function itemDetailsSimple(myJson, el, score,) {                                                          
+        var count = Object.keys(myJson).length;                                                           
+        const itemTemplates = [];                                                                         
+                                                                                                          
+        el.innerHTML=''                                                                                   
+        var i;                                                                                            
+        for (i = 0; i < count; i++) {                                                                     
+                let resource = myJson[i]                                                                  
+                        let aDiv = el.appendChild( document.createElement('div') );                                        
+                                                                                                                                                                
+                        fetch(`https://geocodes-dev.earthcube.org/api/v1/graph/details?r=${resource.URL}`)                                                      
+                                .then(function (response) {                                                                                                     
+                                        return response.json();                                                                                                 
+                                }).then(function (myJson) {                                                                                                     
+                                // console.log(myJson);                                                                                                         
+                                render(itemTemplate(myJson,resource.score),aDiv)                                                                                
+                                })                                                                                                                              
+                }                                                                                         
+};      
 
 function simpleSearch(q, n, s, i) {
-	fetch(`https://geodex.org/api/v1/textindex/search?q=${q}&n=${n}&s=${s}&i=${i}`)
+//	fetch(`https://geocodes-dev.earthcube.org/api/v1/textindex/search?q=${q}&n=${n}&s=${s}&i=${i}`)
+        fetch(`https://geocodes-dev.earthcube.org/api/v1/textindex/search?q=${q}&n=${n}&s=${s}`)
 		.then(function (response) {
 			return response.json();
 		})
 		.then(function (myJson) {
 			// console.log(myJson);
 			const el = document.querySelector('#container2');
-			render(searchTemplate(myJson), el);
+//			render(searchTemplate(myJson), el);
+		html`${itemDetailsSimple(myJson, el)}`
 		});
 }
 
 function providerList() {
-	fetch('http://geodex.org/api/v1/typeahead/providers')
+	fetch('https://geocodes-dev.earthcube.org/api/v1/typeahead/providers')
 		.then(function (response) {
 			return response.json();
 		})

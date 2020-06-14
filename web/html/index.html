@@ -79,6 +79,43 @@
 			border: .5px solid #e6e5e5;
 			border-radius: 5px;
 		}
+.ellipsis {                                                                                                                                                              
+    overflow: hidden;                                                                                                                                                    
+    height: 200px;                                                                                                                                                       
+    line-height: 25px;                                                                                                                                                   
+    margin: 20px;                                                                                                                                                        
+}                                                                                                                                                                        
+                                                                                                                                                                         
+.ellipsis:before {                                                                                                                                                       
+    content:"";                                                                                                                                                          
+    float: left;                                                                                                                                                         
+    width: 5px; height: 200px; }                                                                                                                                         
+                                                                                                                                                                         
+.ellipsis > *:first-child {                                                                                                                                              
+    float: right;                                                                                                                                                        
+    width: 100%;                                                                                                                                                         
+    margin-left: -5px; }  
+.ellipsis:after {                                                                                                                                                        
+    content: "\02026";                                                                                                                                                   
+                                                                                                                                                                         
+    box-sizing: content-box;                                                                                                                                             
+    -webkit-box-sizing: content-box;                                                                                                                                     
+    -moz-box-sizing: content-box;                                                                                                                                        
+                                                                                                                                                                         
+    float: right; position: relative;                                                                                                                                    
+    top: -25px; left: 100%;                                                                                                                                              
+    width: 3em; margin-left: -3em;                                                                                                                                       
+    padding-right: 5px;                                                                                                                                                  
+                                                                                                                                                                         
+    text-align: right;                                                                                                                                                   
+                                                                                                                                                                         
+    background: -webkit-gradient(linear, left top, right top,                                                                                                            
+        from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));                                                                                                
+    background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);                                                                                
+    background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);                                                                                  
+    background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);                                                                                 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white); } 
+
 
 		* {
 			font-family: 'Open Sans', sans-serif;
@@ -165,11 +202,11 @@
 					<p style="margin-top:20px">There are other interfaces that demonstrate using the same P418 indexes and services.</p>
 					<ul>
 						<li>
-							<a target="_blank" href="/uis/webui2/textSearch.html">Additional P418 Search UI (opens in new window)</a>
+							<a target="_blank" href="/geocodes/textSearch.html">Additional P418 Search UI (opens in new window)</a>
 
 						</li>
 						<li>
-							<a target="_blank" href="/uis/webui2/spatialSearch.html">Spatial Search Example (opens in new window) </a>
+							<a target="_blank" href="/geocodes/spatialSearch.html">Spatial Search Example (opens in new window) </a>
 
 						</li>
 

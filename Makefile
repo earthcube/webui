@@ -1,6 +1,9 @@
 BINARY := webui
 .DEFAULT_GOAL := webui
 ORG := geocodes
+VERSION :=`cat VERSION`
+DOCKERNAME :=  p418webui
+
 
 webui:
 	cd cmd/$(BINARY) ; \
@@ -8,8 +11,9 @@ webui:
 
 docker:
 	docker build  --tag="$(ORG)/$(BINARY)"  --file=./build/Dockerfile . ; \
-	docker tag $(ORG)/$(BINARY) $(ORG)/$(BINARY):latest
+	docker tag $(ORG)/$(BINARY) $(ORG)/$(DOCKERNAME):latest
 
 publish: docker
-	docker push $(ORG)/gleaner:$(VERSION) ; \
-	docker push $(ORG)/gleaner:latest
+	docker push $(ORG)/$(DOCKERNAME):latest ; \
+        docker tag $(ORG)/$(DOCKERNAME) $(ORG)/$(DOCKERNAME):$(VERSION) ; \
+	docker push $(ORG)/$(DOCKERNAME):$(VERSION)
