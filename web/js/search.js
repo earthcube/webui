@@ -232,7 +232,7 @@ const nusearch = (barval, q) => {
 		const haspartTemplates = [];
 		var detailsdom = ""
 
-		var elements = barval.search_result.hits[i].fields["hasPart.identifier.url"]
+		var elements = barval.search_result.hits[i].fields["document.fields.hasPart.identifier.url"]
 		elements.forEach(function (element) {
 			haspartTemplates.push(html `<span style="margin:5px"><a target="_blank" href="${element}">${element} <a/></span>`)
 		});
@@ -242,7 +242,7 @@ const nusearch = (barval, q) => {
 	}
 
 
-	// // .search_result.hits[2].fields["variableMeasured.name"]
+	// // .search_result.hits[2].fields["document.fields.variableMeasured.name"]
 	// // hasVarMeasuredName()
 	function hasVarMeasuredName(t, i) {
 		if (t == "undefined") {
@@ -252,8 +252,8 @@ const nusearch = (barval, q) => {
 		const haspartTemplates = [];
 		var detailsdom = ""
 
-		var elements = barval.search_result.hits[i].fields["variableMeasured.name"]
-		// var elurl = barval.search_result.hits[i].fields["variableMeasured.url"]
+		var elements = barval.search_result.hits[i].fields["document.fields.variableMeasured.name"]
+		// var elurl = barval.search_result.hits[i].fields["document.fields.variableMeasured.url"]
 		if (elements != null) {
 			elements.forEach(function (element) {
 				haspartTemplates.push(html `<span style="margin:5px">${element} </span>`)
@@ -341,11 +341,11 @@ const nusearch = (barval, q) => {
 
 	var i;
 	for (i = 0; i < count; i++) {
-		var desc = `${barval.search_result.hits[i].fields.description}`;
+		var desc = `${barval.search_result.hits[i].fields["document.fields.description"]}`;
 		var shortdesc = desc.slice(0, 500);
 		shortdesc = desctest(shortdesc)
 
-		var name = `${barval.search_result.hits[i].fields.name}`;
+		var name = `${barval.search_result.hits[i].fields["document.fields.name"]}`;
 		name = nametest(name)
 
 		// need to check for distribution..  then contentUrl
@@ -365,15 +365,15 @@ const nusearch = (barval, q) => {
 		// }
 
 		var dataDownloadTemplates = ""
-		if (barval.search_result.hits[i].fields["distribution.contentUrl"] != null) {
-			var curl = `${barval.search_result.hits[i].fields["distribution.contentUrl"]}`; //
+		if (barval.search_result.hits[i].fields["document.fields.distribution.contentUrl"] != null) {
+			var curl = `${barval.search_result.hits[i].fields["document.fields.distribution.contentUrl"]}`; //
 			dataDownloadTemplates = curltest(curl)
 		}
 
 
 		// Set up the filter on source section
 		var filterTemplates = ""
-		var newq = `${q}  p418source:${barval.search_result.hits[i].fields.p418source}`
+		var newq = `${q}  p418source:${barval.search_result.hits[i].fields["document.fields.p418source"]}`
 		var urlrewrite = UpdateQueryString("q", newq, null)
 		filterTemplates = (html `<a href="${urlrewrite}">
 		<img style="margin-left:20px;height:20px" src="./images/filter.svg"></a>`)
@@ -381,15 +381,15 @@ const nusearch = (barval, q) => {
 
 		// Look for addition types
 
-		var hpat = hasPartAdditionalType(`${barval.search_result.hits[i].fields["hasPart.@type"]}`, i)
-		var vm = hasVarMeasuredName(`${barval.search_result.hits[i].fields["variableMeasured.@type"]}`, i)
+		var hpat = hasPartAdditionalType(`${barval.search_result.hits[i].fields["document.fields.hasPart.@type"]}`, i)
+		var vm = hasVarMeasuredName(`${barval.search_result.hits[i].fields["document.fields.variableMeasured.@type"]}`, i)
 
 
 		// Main Item div template
 		itemTemplates.push(html `<div class="resultitem" style="margin-top:15px">
-		<a target="_blank" href="${barval.search_result.hits[i].fields.p418url}">${name}</a>
+		<a target="_blank" href="${barval.search_result.hits[i].fields['document.fields.p418url']}">${name}</a>
 		  <br/>
-			<img style="height:20px" src="${barval.search_result.hits[i].fields.p418logo}">
+			<img style="height:20px" src="${barval.search_result.hits[i].fields["document.fields.p418logo"]}">
 			${filterTemplates}
 			${dataDownloadTemplates}
 			<br/>
@@ -501,9 +501,9 @@ function searchActions() {
 	updateURL();
 
 	// Different search options
-//	blastsearchsimple(q, n, s);
+	blastsearchsimple(q, n, s);
 	// threadSearch(q, n, s, i); 
-	 simpleSearch(q,n,s,i);
+//	 simpleSearch(q,n,s,i);
 
 //	 updateNav();   // write to content div 1
 }

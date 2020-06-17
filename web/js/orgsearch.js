@@ -127,7 +127,7 @@ function simpleSearch(q, n, s, i, ddbox) {
 	const el = document.querySelector('#container2');
 	render(activesearch(), el)
 
-	fetch(`http://geodex.org/api/v1/textindex/searchset?q=${q}&n=15&s=0`)
+	fetch(`https://geocodes-dev.earthcube.org/api/v1/textindex/searchset?q=${q}&n=15&s=0`)
 		.then(function (response) {
 			return response.json();
 		})
@@ -144,7 +144,7 @@ function graphSearch(q, n, s, i, ddbox) {
 	const el = document.querySelector('#container2');
 	render(activesearch(), el)
 
-	fetch(`http://localhost:6789/api/dev/graph/orgsearch?r=${q}`)
+	fetch(`https://geocodes-dev.earthcube.org/api/dev/graph/orgsearch?r=${q}`)
 		.then(function (response) {
 			return response.json();
 		})
